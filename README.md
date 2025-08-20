@@ -4,6 +4,10 @@
 
 A minimal FastAPI application for storing and retrieving user action logs in MariaDB. Features a clean web interface, comprehensive API, and lean codebase.
 
+## Web Interface Preview
+
+![User Action Logger Interface](image.jpeg)
+
 ## 📁 Project Structure
 
 ```
@@ -21,11 +25,13 @@ Day07-Technical/
 ## 🔧 Setup
 
 ### 1. Install Dependencies
+
 ```powershell
 pip install -r requirements.txt
 ```
 
 ### 2. Database Configuration
+
 ```powershell
 # Copy environment template
 cp .env.example .env
@@ -39,54 +45,64 @@ cp .env.example .env
 ```
 
 ### 3. Database Setup
+
 **Option A - HeidiSQL (Recommended):**
+
 - Open HeidiSQL and connect to MariaDB
 - Load and execute `user_logs.sql`
 
 **Option B - Command Line:**
+
 ```powershell
 Get-Content user_logs.sql | mysql -u root -p
 ```
 
 ### 4. Start Application
+
 ```powershell
 python main.py
 ```
 
 ## 🌐 Application Access
 
-| URL | Description |
-|-----|-------------|
-| `http://localhost:8000` | 🖥️ **Web Interface** - Easy-to-use logging form |
+| URL                          | Description                                       |
+| ---------------------------- | ------------------------------------------------- |
+| `http://localhost:8000`      | 🖥️ **Web Interface** - Easy-to-use logging form   |
 | `http://localhost:8000/docs` | 📋 **API Documentation** - Interactive Swagger UI |
-| `http://localhost:8000/logs` | 📊 **API Endpoint** - Get all logs (JSON) |
+| `http://localhost:8000/logs` | 📊 **API Endpoint** - Get all logs (JSON)         |
 
 ## 🔌 API Endpoints
 
 ### POST /log
+
 Create a new user action log
+
 ```json
 {
   "user_id": 1,
-  "action": "chat_message", 
+  "action": "chat_message",
   "message": "Hello world!"
 }
 ```
 
 ### GET /logs
+
 Get all logs (last 100)
 
 ### GET /logs/{user_id}
+
 Get logs for specific user
 
 ## 🧪 Testing
 
 ### Automated Testing
+
 ```powershell
 python test_api.py
 ```
 
 ### Manual Testing
+
 ```powershell
 # Create log entry
 curl -X POST "http://localhost:8000/log" \
